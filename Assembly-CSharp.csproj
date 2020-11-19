@@ -64,14 +64,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\RW\Scripts\ShaderDebugger.cs" />
+    <Compile Include="Assets\RW\Scripts\TestShaderEditingScript.cs" />
+    <None Include="Assets\Deform\LICENSE.txt" />
     <None Include="Assets\RW\Shaders\LitVertexColor.shader" />
     <None Include="Assets\RW\Shaders\CartoonWater.shader" />
+    <None Include="Assets\Deform\EditorResources\Textures\External\MaterialDesign\LICENSE.txt" />
     <None Include="Assets\RW\Shaders\BendShader.shader" />
+    <None Include="Assets\Deform\README.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -88,11 +98,17 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -279,6 +295,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/2019.3.0f6/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -625,6 +644,28 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/2019.3.0f6/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Beans.Unity.Editor.csproj">
+      <Project>{0FB752B4-2AFB-CEBF-514B-732E4F54BB2E}</Project>
+      <Name>Beans.Unity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Beans.Unity.Collections.csproj">
+      <Project>{E7A42ADE-6956-28D2-FC16-03801546D49D}</Project>
+      <Name>Beans.Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Deform.csproj">
+      <Project>{915B9BD9-0298-C39F-17C3-85D6AB2AA9AE}</Project>
+      <Name>Deform</Name>
+    </ProjectReference>
+    <ProjectReference Include="DeformEditor.csproj">
+      <Project>{CB1F619B-5CD8-7721-0AD8-2668D4E12EFE}</Project>
+      <Name>DeformEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Beans.Unity.Mathematics.csproj">
+      <Project>{89BAEF61-4E83-E7D1-4E65-17369FC7EFBB}</Project>
+      <Name>Beans.Unity.Mathematics</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

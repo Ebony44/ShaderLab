@@ -5,9 +5,13 @@
         _MainTex ("Texture", 2D) = "white" {}
 
         _BendAngle("Bend Angle",Float) = 0
-        // _BendTopPoint("Bend Top Point", Int) = 0
-        // _BendBottomPoint("Bend Bottom Point", Int) = 0
-        _PinchingPoint("Pinching Point", Int) = 0 // 0,1,2, 3,4,5
+            // _BendTopPoint("Bend Top Point", Int) = 0
+            // _BendBottomPoint("Bend Bottom Point", Int) = 0
+            _PinchingPoint("Pinching Point", Int) = 0 // 0,1,2, 3,4,5
+            _Length("Buffer Length", Int) = 2
+        
+        _TargetVector("Target Vector", Vector) = (0,0,0)
+        _TargetVectorRelative("Target Vector Relative", Vector) = (0,0,0)
 
     }
     SubShader
@@ -28,6 +32,8 @@
             #pragma multi_compile_fog
             #pragma target 4.5
 
+            #pragma enable_d3d11_debug_symbols
+
             #include "UnityCG.cginc"
 
             struct appdata
@@ -42,19 +48,25 @@
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+                float3 worldPos : TEXCOORD1;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
             float _BendAngle;
+            int _PinchingPoint;
+            float3 _TargetVector;
+
+            float top;
+            float bottom;
             
             float4x4 axisToMesh;
             float4x4 meshToAxis;
 
-            // RWStructuredBuffer<float> buffer : register(u1);
+            RWStructuredBuffer<float> buffer : register(u1);
             // RWStructuredBuffer<float3> buffer : register(u1);
-            RWStructuredBuffer<float4> buffer : register(u1);
+            // RWStructuredBuffer<float4> buffer : register(u1);
 
 
             float PrintValue(float2 vCoords, float fValue, float fMaxDigits, float fDecimalPlaces)
@@ -102,23 +114,84 @@
 
             v2f vert (appdata v)
             {
+                const float PI = 3.14159;
+
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-
                 
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex);
+                
+                // buffer[0] = o.worldPos;
+
+                // TODO: adjust value of testPoint and pinchingPoint
+
+                /*if (v.vertex.y <= 0)
+                {
+                    top = o.uv.y;
+                }
+                if (v.vertex.y <= 1)
+                {
+                    bottom = o.uv.y;
+                }*/
+
+                if (o.uv.x >= 0.7 && o.uv.y >= 0.7)
+                {
+                    float4 testPoint = (0.7, 0.6, 0.4, 1.0);
+                    float4 pinchingPoint = mul(testPoint, v.vertex);
+
+                    float angleRadians = radians(float(_BendAngle) );
+                    float scale = 1 / angleRadians;
+
+                    
+                    float rotation = pinchingPoint.y * angleRadians;
+                    // buffer[0] = rotation;
+
+                    buffer[0] = PI - rotation;
+                    float c = cos(PI - rotation);
+                    // buffer[0] = c;
+                    float s = sin(PI - rotation);
+                    testPoint.xy = float2
+                        (
+                            (scale * c) + scale - (testPoint.x * c),
+                            (scale * s) - (testPoint.x * s)
+                            );
+
+                    o.vertex = mul(testPoint, pinchingPoint);
+                }
+                
+
+
+                // buffer[1] = o.worldPos;
 
                 // float3 baseWorldPos = unity_ObjectToWorld._m03_m13_m23;
                 // buffer[0] = baseWorldPos;
+
+                if (o.uv.x <= 0.9
+                    && o.uv.y <= 0.9)
+                    // && o.uv.x <= 0.96
+                    // && o.uv.y <= 0.96)
+                {
+                    // buffer[0] = UnityObjectToClipPos(o.vertex);
+
+                    // buffer[0] = o.worldPos;
+                    
+                    // buffer2[0] = o.worldPos;
+
+                    // buffer[0] = UnityObjectToViewPos(o.vertex);
+                }
                 
                 
                 UNITY_TRANSFER_FOG(o,o.vertex);
-
+                // _PinchingPoint = 4;
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
+                
+                const float PI = 3.14159;
+
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
@@ -132,6 +205,8 @@
                 maximum = max(maximum, tex2D(_MainTex, i.uv + float2(dx, -dx)));
                 maximum = max(maximum, tex2D(_MainTex, i.uv + float2(-dx, dx)));
                 maximum = max(maximum, tex2D(_MainTex, i.uv + float2(dx, dx)));
+
+                return tex2D(_MainTex, i.uv);
                 
                 // buffer[0] = maximum;
                 
@@ -145,33 +220,35 @@
                     // float2 position = float2(0.72, 0.9);
                     // float3 base = PrintValue((i.uv - position) * font, number, 6.0, 2.0).xxx;
                     
-                    float4 testPoint = (0.7, 0.6, 0.4, 1.0);
-                    float4 pinchingPoint = mul(testPoint, i.vertex);
-                    //buffer[0] = pinchingPoint;
-
-                    float angleRadians = radians( float(_BendAngle)  );
-                    float scale = 1 / angleRadians;
-
-                    float rotation = pinchingPoint.y * angleRadians;
-
-                    float c = cos( )
-
-
-                    // buffer[0] = rotation;
-
                     
 
 
-                    float2 font = float2 (24.0, 30.0);
-                    float2 position = float2(_ScreenParams.x - 250.0, 15.0);
-                    float3 base = PrintValue((i.vertex.xy - position) / font, 123.0, 6.0, 2.0).xxx;
-                    float4 tempBase = float4(base, 1.0);
-                    tempBase.r = 0.5;
-                    return tempBase;
+                    // float2 font = float2 (24.0, 30.0);
+                    // float2 position = float2(_ScreenParams.x - 250.0, 15.0);
+                    // float3 base = PrintValue((i.vertex.xy - position) / font, 123.0, 6.0, 2.0).xxx;
+                    // float4 tempBase = float4(base, 1.0);
+                    
+                    // buffer[0] = WorldSpaceViewDir(tempBase);
+                    // buffer[0] = ObjSpaceViewDir(tempBase);
+
+                    // tempBase.r = 0.5;
+                    // return tempBase;
+
                 }
                 else return tex2D(_MainTex, i.uv);
 
                 // return col;
+            }
+            
+            
+            void TestCalculateWorldPos(inout appdata_full v)
+            {
+                // unity_WorldToObject
+                float3 n = normalize(mul(unity_ObjectToWorld, v.normal).xyz);
+                float3 worldSpace = mul(unity_ObjectToWorld, v.vertex).xyz;
+                
+                // v.texcoord.xy = float2(dot(worldSpace, uDirection), dot(worldSpace, vDirection));
+
             }
             ENDCG
         }

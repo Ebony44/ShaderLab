@@ -79,3 +79,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TargetVector: {r: 10.18, g: 0.41, b: 15.86, a: 1}
