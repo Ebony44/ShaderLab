@@ -139,6 +139,8 @@
                 {
                     float4 testPoint = (0.7, 0.6, 0.4, 1.0);
                     float4 pinchingPoint = mul(testPoint, v.vertex);
+                    
+                    // buffer[0] = pinchingPoint;
 
                     float angleRadians = radians(float(_BendAngle) );
                     float scale = 1 / angleRadians;

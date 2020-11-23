@@ -65,11 +65,17 @@
   <ItemGroup>
     <Compile Include="Assets\RW\Scripts\ShaderDebugger.cs" />
     <Compile Include="Assets\RW\Scripts\TestShaderEditingScript.cs" />
+    <None Include="Assets\RW\Shaders\Lab2\009InterpolatingShader.shader" />
+    <None Include="Assets\RW\Shaders\Lab1\BlendLabShader.shader" />
+    <None Include="Assets\RW\Shaders\Lab2\008PlanarMapping.shader" />
     <None Include="Assets\Deform\LICENSE.txt" />
     <None Include="Assets\RW\Shaders\LitVertexColor.shader" />
+    <None Include="Assets\RW\Shaders\Lab2\009_2InterpolatingShader.shader" />
     <None Include="Assets\RW\Shaders\CartoonWater.shader" />
+    <None Include="Assets\RW\Shaders\Lab1\LabShader.shader" />
     <None Include="Assets\Deform\EditorResources\Textures\External\MaterialDesign\LICENSE.txt" />
     <None Include="Assets\RW\Shaders\BendShader.shader" />
+    <None Include="Assets\RW\Shaders\TutorialShader.shader" />
     <None Include="Assets\Deform\README.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
