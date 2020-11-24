@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
 
 public class TestShaderEditingScript : MonoBehaviour
@@ -33,4 +36,5 @@ public class TestShaderEditingScript : MonoBehaviour
     {
         
     }
+
 }

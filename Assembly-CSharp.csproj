@@ -63,6 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\ParallelJobSystemDemo.cs" />
+    <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleDependencyDemo.cs" />
+    <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleJobSystemDemo.cs" />
+    <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\TestBurstCompiler.cs" />
+    <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\TransformJobSystemDemo.cs" />
     <Compile Include="Assets\RW\Scripts\ShaderDebugger.cs" />
     <Compile Include="Assets\RW\Scripts\TestShaderEditingScript.cs" />
     <None Include="Assets\RW\Shaders\Lab2\009InterpolatingShader.shader" />
