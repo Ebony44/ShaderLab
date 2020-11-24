@@ -41,17 +41,19 @@ public class SimpleJobSystemDemo : MonoBehaviour
 
     }
 
-    [BurstCompile(CompileSynchronously = true)]
-    public struct SimpleJob : IJob
+    
+
+}
+
+[BurstCompile(CompileSynchronously = true)]
+public struct SimpleJob : IJob
+{
+    public float number;
+
+    public NativeArray<float> data;
+
+    public void Execute()
     {
-        public float number;
-
-        public NativeArray<float> data;
-
-        public void Execute()
-        {
-            data[0] += number;
-        }
+        data[0] += number;
     }
-
 }
