@@ -63,11 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ProjectileMotionDemo\Scripts\FootballHandler\FootballHandler.cs" />
+    <Compile Include="Assets\ProjectileMotionDemo\Scripts\FootballHandler\FootballSpawner.cs" />
+    <Compile Include="Assets\ProjectileMotionDemo\Scripts\FootballHandler\TrajectoryHandler.cs" />
+    <Compile Include="Assets\ProjectileMotionDemo\Scripts\SwipeHandler\SwipeHandler.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\ParallelJobSystemDemo.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleDependencyDemo.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleJobSystemDemo.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\TestBurstCompiler.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\TransformJobSystemDemo.cs" />
+    <Compile Include="Assets\RW\Scripts\JsonSerialization\JsonOperation.cs" />
+    <Compile Include="Assets\RW\Scripts\JsonSerialization\PlayerData.cs" />
+    <Compile Include="Assets\RW\Scripts\ProjectileMotion\ProjectileMotionTest.cs" />
     <Compile Include="Assets\RW\Scripts\ShaderDebugger.cs" />
     <Compile Include="Assets\RW\Scripts\TestShaderEditingScript.cs" />
     <None Include="Assets\RW\Shaders\Lab2\009InterpolatingShader.shader" />
