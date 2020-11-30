@@ -67,6 +67,12 @@
     <Compile Include="Assets\ProjectileMotionDemo\Scripts\FootballHandler\FootballSpawner.cs" />
     <Compile Include="Assets\ProjectileMotionDemo\Scripts\FootballHandler\TrajectoryHandler.cs" />
     <Compile Include="Assets\ProjectileMotionDemo\Scripts\SwipeHandler\SwipeHandler.cs" />
+    <Compile Include="Assets\RW\Scripts\C# Discard Feature\DiscardLab.cs" />
+    <Compile Include="Assets\RW\Scripts\CNG.cs" />
+    <Compile Include="Assets\RW\Scripts\CNG\DiffieHellman.cs" />
+    <Compile Include="Assets\RW\Scripts\CNG1.cs" />
+    <Compile Include="Assets\RW\Scripts\GamePerformance\UpdateManagement\IBatchUpdate.cs" />
+    <Compile Include="Assets\RW\Scripts\GamePerformance\UpdateManagement\UpdateManager.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\ParallelJobSystemDemo.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleDependencyDemo.cs" />
     <Compile Include="Assets\RW\Scripts\JobSystem&amp;BurstCompile\SimpleJobSystemDemo.cs" />
@@ -136,6 +142,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>D:/Lab/UnityProjects/WritingShaderLabRepo/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -683,6 +692,10 @@
     <ProjectReference Include="Beans.Unity.Mathematics.csproj">
       <Project>{89BAEF61-4E83-E7D1-4E65-17369FC7EFBB}</Project>
       <Name>Beans.Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.EditorIterationProfiler.Editor.csproj">
+      <Project>{5756C766-3B56-89A5-5CC2-5BB26188D85E}</Project>
+      <Name>Unity.EditorIterationProfiler.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
